@@ -1,11 +1,13 @@
 /bin/
-.gradle/
-.apt_generated/
-.apt_generated_tests/
+/.gradle/
+/.apt_generated/
+/.apt_generated_tests/
 /build/
+/buildSrc/.gradle
 /buildSrc/build
 /compiletime-aspects/
 /runtime-aspects/
+spring-shell.log
 
 .idea/libraries/
 .idea/workspace.xml
