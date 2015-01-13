@@ -2,10 +2,10 @@
   <artifact type="war" name="Gradle : com.example:example-app : example-app-1.0-SNAPSHOT.war">
     <output-path>$PROJECT_DIR$/build/idea/artifacts/example-app</output-path>
     <root id="archive" name="example-app-1.0-SNAPSHOT.war">
-      <element id="javaee-facet-resources" facet="example-app/web/Web Gradle : example-app-1.0-SNAPSHOT.war" />
+      <element id="javaee-facet-resources" facet="university-faculty/web/Web Gradle : example-app-1.0-SNAPSHOT.war" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
-          <element id="module-output" name="example-app" />
+          <element id="module-output" name="university-faculty" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Gradle: proteusframework-0.9.5" />
