@@ -8,6 +8,7 @@
 /compiletime-aspects/
 /runtime-aspects/
 spring-shell.log
+../proteusframework-bootstrapdb-0.9.0-20140711150726.pgdump
 
 .idea/libraries/
 .idea/workspace.xml
