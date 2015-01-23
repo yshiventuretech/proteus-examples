@@ -34,22 +34,22 @@ import net.proteusframework.core.hibernate.model.AbstractEntity;
 @Entity
 public class Faculty extends AbstractEntity
 {
-	/** Sequence name. */
-	private final static String SEQ = "faculty_id_seq";
-	/** The first name. */
-	private String _firstName;
-	/** The last name. */
-	private String _lastName;
-	/** The unique slug. */
-	private String _slug;
-	/** The faculty rank type. */
-	private RankType _rankType;
-	/** The faculty join date. */
-	private Date _joinDate;
-	/** The search are of the faculty. */
-	private String _searchArea;
-	/** The faculty if on sabbatical. */
-	private boolean _sabbatical = false;
+    /** Sequence name. */
+    private final static String SEQ = "faculty_id_seq";
+    /** The first name. */
+    private String _firstName;
+    /** The last name. */
+    private String _lastName;
+    /** The unique slug. */
+    private String _slug;
+    /** The faculty rank type. */
+    private RankType _rankType;
+    /** The faculty join date. */
+    private Date _joinDate;
+    /** The search are of the faculty. */
+    private String _searchArea;
+    /** The faculty if on sabbatical. */
+    private boolean _sabbatical = false;
 
 	/**
 	 * Get the identifier.
