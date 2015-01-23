@@ -35,107 +35,107 @@ import net.proteusframework.ui.search.QLBuilderImpl;
 @Repository(FacultyDAO.RESOURCE_NAME)
 public class FacultyDAO extends AbstractProcessor<Faculty>
 {
-	/** Logger. */
-	private final static Logger _logger = Logger.getLogger(Faculty.class);
-	/** Resource name. */
-	public static final String RESOURCE_NAME = "com.example.app.model.university.FacultyDAO";
+    /** Logger. */
+    private final static Logger _logger = Logger.getLogger(Faculty.class);
+    /** Resource name. */
+    public static final String RESOURCE_NAME = "com.example.app.model.university.FacultyDAO";
 
-	/**
-	 * Get all the faculties in the university.
-	 *
-	 * @return qb.
-	 */
-	public QLBuilder getAllFacultiesQB()
-	{
-		QLBuilder qb = new QLBuilderImpl(Faculty.class,"faculty");
-		return qb;
-	}
+    /**
+     * Get all the faculties in the university.
+     *
+     * @return qb.
+     */
+    public QLBuilder getAllFacultiesQB()
+    {
+        QLBuilder qb = new QLBuilderImpl(Faculty.class,"faculty");
+        return qb;
+    }
 
-	/**
-	 * Get all the faculties as list.
-	 *
-	 * @return the faculties list.
-	 */
-	public List<Faculty> getAllFacultiesAsList()
-	{
-		return getAllFacultiesQB().getQueryResolver().list();
-	}
+    /**
+     * Get all the faculties as list.
+     *
+     * @return the faculties list.
+     */
+    public List<Faculty> getAllFacultiesAsList()
+    {
+        return getAllFacultiesQB().getQueryResolver().list();
+    }
 
-	/**
-	 * Save the faculty.
-	 *
-	 * @param faculty the faculty to save
-	 */
-	public void saveFaculty(Faculty faculty)
-	{
-		beginTransaction();
-		boolean success = false;
-		try
-		{
-			final Session session = getSession();
-			session.saveOrUpdate(faculty);
-			success = true;
-		}
-		finally
-		{
-			if (success)
-				commitTransaction();
-			else
-				rollbackTransaction();
-		}
-	}
+    /**
+     * Save the faculty.
+     *
+     * @param faculty the faculty to save
+     */
+    public void saveFaculty(Faculty faculty)
+    {
+        beginTransaction();
+        boolean success = false;
+        try
+        {
+            final Session session = getSession();
+            session.saveOrUpdate(faculty);
+            success = true;
+        }
+        finally
+        {
+            if (success)
+                commitTransaction();
+            else
+                rollbackTransaction();
+        }
+    }
 
-	/**
-	 * Delete the specified faculty.
-	 *
-	 * @param faculty the faculty to delete.
-	 */
-	public void deleteFaculty(Faculty faculty)
-	{
-		beginTransaction();
-		boolean success = false;
-		try
-		{
-			final Session session = getSession();
-			session.delete(faculty);
-			success = true;
-		}
-		finally
-		{
-			if (success)
-				commitTransaction();
-			else
-				rollbackTransaction();
-		}
-	}
+    /**
+     * Delete the specified faculty.
+     *
+     * @param faculty the faculty to delete.
+     */
+    public void deleteFaculty(Faculty faculty)
+    {
+        beginTransaction();
+        boolean success = false;
+        try
+        {
+            final Session session = getSession();
+            session.delete(faculty);
+            success = true;
+        }
+        finally
+        {
+            if (success)
+                commitTransaction();
+            else
+                rollbackTransaction();
+        }
+    }
 
-	/**
-	 * Delete the specified faculties.
-	 *
-	 * @param faculties the faculties to delete.
-	 */
-	public void deleteFaculties(Collection<? extends Faculty> faculties)
-	{
-		beginTransaction();
-		boolean success = false;
-		try
-		{
-			final Session session = getSession();
-			faculties.forEach(session::delete);
-			success = true;
-		}
-		finally
-		{
-			if (success)
-				commitTransaction();
-			else
-				rollbackTransaction();
-		}
-	}
+    /**
+     * Delete the specified faculties.
+     *
+     * @param faculties the faculties to delete.
+     */
+    public void deleteFaculties(Collection<? extends Faculty> faculties)
+    {
+        beginTransaction();
+        boolean success = false;
+        try
+        {
+            final Session session = getSession();
+            faculties.forEach(session::delete);
+            success = true;
+        }
+        finally
+        {
+            if (success)
+                commitTransaction();
+            else
+                rollbackTransaction();
+        }
+    }
 
-	@Override
-	public Class<Faculty> getEntityType()
-	{
-		return Faculty.class;
-	}
+    @Override
+    public Class<Faculty> getEntityType()
+    {
+        return Faculty.class;
+    }
 }
