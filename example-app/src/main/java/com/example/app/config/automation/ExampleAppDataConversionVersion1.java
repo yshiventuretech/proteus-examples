@@ -52,10 +52,10 @@ public class ExampleAppDataConversionVersion1
     private static final String IDENTIFIER = "example-app";
 
     /**
-	 * User Profile Entity
-	 *
-	 * @return Bean.
-	 */
+	* User Profile Entity
+	*
+	* @return Bean.
+	*/
 	@TaskQualifier(TaskQualifier.Type.data_conversion)
 	@Bean
 	public DataConversion FacultyEntityDataConversion4()
