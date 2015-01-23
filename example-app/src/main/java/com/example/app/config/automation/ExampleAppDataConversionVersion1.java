@@ -52,15 +52,15 @@ public class ExampleAppDataConversionVersion1
     private static final String IDENTIFIER = "example-app";
 
     /**
-	* User Profile Entity
-	*
-	* @return Bean.
-	*/
-	@TaskQualifier(TaskQualifier.Type.data_conversion)
-	@Bean
-	public DataConversion FacultyEntityDataConversion4()
-	{
-		List<SQLStatement> ddl = new ArrayList<>();
+      * User Profile Entity
+      *
+      * @return Bean.
+      */
+     @TaskQualifier(TaskQualifier.Type.data_conversion)
+     @Bean
+     public DataConversion FacultyEntityDataConversion4()
+     {
+        List<SQLStatement> ddl = new ArrayList<>();
 		ddl.add(new SQLStatement("create table Faculty (id int8 not null, firstname varchar(255), joindate timestamp, lastname varchar(255)," +
 				" ranktype varchar(255), sabbatical boolean default false not null, searcharea varchar(255), slug varchar(255) not null, primary key (id))",null));
 		ddl.add(new SQLStatement("alter table Faculty add constraint UK_srpq09bwkh4ko2x8h4hsub5ci  unique (slug)",null));
