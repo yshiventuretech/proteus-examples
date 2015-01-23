@@ -66,7 +66,7 @@ public class ExampleAppDataConversionVersion1
 	ddl.add(new SQLStatement("alter table Faculty add constraint UK_srpq09bwkh4ko2x8h4hsub5ci  unique (slug)",null));
 	ddl.add(new SQLStatement("create sequence faculty_id_seq",null));
 	return SQLDataConversion.createSchemaUpdate("example-app", "Faculty Entity", 4, false, ddl);
-	}
+     }
 
     /**
      * User Profile Entity
