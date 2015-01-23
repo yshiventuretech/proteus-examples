@@ -107,6 +107,8 @@ public class Faculty extends AbstractEntity
 		_lastName = lastName;
 	}
 
+
+
 	/**
 	 * Get the unique slug.
 	 *

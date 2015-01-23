@@ -421,7 +421,6 @@ public class UserProfileViewer extends Container
                     aboutMeVideo
                 ));
             }
-
         }
     }
 
