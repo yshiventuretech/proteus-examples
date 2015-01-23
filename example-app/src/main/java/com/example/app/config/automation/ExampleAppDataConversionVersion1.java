@@ -51,7 +51,7 @@ public class ExampleAppDataConversionVersion1
     /** Data Conversion Identifier. */
     private static final String IDENTIFIER = "example-app";
 
-	/**
+    /**
 	 * User Profile Entity
 	 *
 	 * @return Bean.
