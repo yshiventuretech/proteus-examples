@@ -53,52 +53,52 @@ import net.proteusframework.ui.workspace.WorkspaceHandlerResult;
 @Configurable
 public class FacultyList extends HistoryContainer
 {
-	/** The resource name. */
-	final static String RESOURCE_NAME = "com.example.app.ui.university.FacultyList";
-	/* The faculty DAO. **/
-	@Autowired
-	private FacultyDAO _facultyDAO;
+    /** The resource name. */
+    final static String RESOURCE_NAME = "com.example.app.ui.university.FacultyList";
+    /* The faculty DAO. **/
+    @Autowired
+    private FacultyDAO _facultyDAO;
 
-	@Override
-	public void init()
-	{
-		super.init();
-		_setupUI();
-	}
+    @Override
+    public void init()
+    {
+        super.init();
+        _setupUI();
+    }
 
-	private void _setupUI()
-	{
-		final Container mainCon = new Container();
-		mainCon.addClassName("faculty-list");
-		setDefaultComponent(mainCon);
+    private void _setupUI()
+    {
+        final Container mainCon = new Container();
+        mainCon.addClassName("faculty-list");
+        setDefaultComponent(mainCon);
 
-		final Label idLabel = new Label(TextSources.create("Id"));
-		final Label nameLabel = new Label(TextSources.create("Name"));
-		final Label jobGradeLabel = new Label(TextSources.create("Job Grade"));
-		mainCon.add(Container.of("column-label", idLabel, nameLabel, jobGradeLabel));
+        final Label idLabel = new Label(TextSources.create("Id"));
+        final Label nameLabel = new Label(TextSources.create("Name"));
+        final Label jobGradeLabel = new Label(TextSources.create("Job Grade"));
+        mainCon.add(Container.of("column-label", idLabel, nameLabel, jobGradeLabel));
 
-		List<Faculty> facultyList = _facultyDAO.getAllFacultiesAsList();
-		for(Faculty faculty : facultyList)
-		{
-			final Field idField = new Field(faculty.getId() + "");
-			idField.setEditable(false);
-			final TextButton nameField = new TextButton(TextSources.create(faculty.getFirstName()));
-			nameField.addActionListener(new ActionListener()
-			{
-				@Override
-				public void actionPerformed(ActionEvent ev)
-				{
-					Dialog dialog = new Dialog(TextSources.create("Dialog Title"));
-					dialog.setVisible(true);
-					dialog.set(20, 20, new Container());
-					getWindowManager().add(dialog);
-					dialog.add(new Label(TextSources.create("Dialog text")));
-					//dialog.close();
-				}
-			});
-			final Field jobGradeField = new Field(faculty.getRankType() + "");
-			jobGradeField.setEditable(false);
-			mainCon.add(Container.of("content-field", idField, nameField, jobGradeField));
-		}
-	}
+        List<Faculty> facultyList = _facultyDAO.getAllFacultiesAsList();
+        for(Faculty faculty : facultyList)
+        {
+            final Field idField = new Field(faculty.getId() + "");
+            idField.setEditable(false);
+            final TextButton nameField = new TextButton(TextSources.create(faculty.getFirstName()));
+            nameField.addActionListener(new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ev)
+                {
+                    Dialog dialog = new Dialog(TextSources.create("Dialog Title"));
+                    dialog.setVisible(true);
+                    dialog.set(20, 20, new Container());
+                    getWindowManager().add(dialog);
+                    dialog.add(new Label(TextSources.create("Dialog text")));
+                    //dialog.close();
+                }
+            });
+            final Field jobGradeField = new Field(faculty.getRankType() + "");
+            jobGradeField.setEditable(false);
+            mainCon.add(Container.of("content-field", idField, nameField, jobGradeField));
+        }
+    }
 }
