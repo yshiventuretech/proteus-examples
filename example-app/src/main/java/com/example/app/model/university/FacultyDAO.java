@@ -109,30 +109,6 @@ public class FacultyDAO extends AbstractProcessor<Faculty>
         }
     }
 
-    /**
-     * Delete the specified faculties.
-     *
-     * @param faculties the faculties to delete.
-     */
-    public void deleteFaculties(Collection<? extends Faculty> faculties)
-    {
-        beginTransaction();
-        boolean success = false;
-        try
-        {
-            final Session session = getSession();
-            faculties.forEach(session::delete);
-            success = true;
-        }
-        finally
-        {
-            if (success)
-                commitTransaction();
-            else
-                rollbackTransaction();
-        }
-    }
-
     @Override
     public Class<Faculty> getEntityType()
     {
