@@ -19,14 +19,14 @@ package com.example.app.model.university;
  */
 public enum RankType
 {
-	/** The Lecturer. */
-	Lecturer,
-	/** The Adjunct Professor. */
-	AdjunctProfessor,
-	/** The Assistant Professor. */
-	AssistantProfessor,
-	/** The Associate Profess. */
-	AssociateProfessor,
-	/** The Professor. */
-	Professor;
+    /** The Lecturer. */
+    Lecturer,
+    /** The Adjunct Professor. */
+    AdjunctProfessor,
+    /** The Assistant Professor. */
+    AssistantProfessor,
+    /** The Associate Profess. */
+    AssociateProfessor,
+    /** The Professor. */
+    Professor;
 }
