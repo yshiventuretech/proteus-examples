@@ -213,19 +213,3 @@ public class Faculty extends AbstractEntity
     }
 }
 
-/**
- * RankType for the faculty.
- */
-enum RankType
-{
-    /** The Lecturer. */
-    Lecturer,
-    /** The Adjunct Professor. */
-    AdjunctProfessor,
-    /** The Assistant Professor. */
-    AssistantProfessor,
-    /** The Associate Profess. */
-    AssociateProfessor,
-    /** The Professor. */
-    Professor;
-}
