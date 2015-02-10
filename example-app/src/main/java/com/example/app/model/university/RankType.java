@@ -28,5 +28,5 @@ public enum RankType
     /** The Associate Profess. */
     AssociateProfessor,
     /** The Professor. */
-    Professor;
+    Professor
 }

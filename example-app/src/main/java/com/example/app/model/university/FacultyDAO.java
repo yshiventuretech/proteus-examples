@@ -11,15 +11,10 @@
 
 package com.example.app.model.university;
 
-import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.processing.RoundEnvironment;
-import javax.lang.model.element.TypeElement;
-import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 import com.i2rd.hibernate.AbstractProcessor;
 
@@ -35,8 +30,6 @@ import net.proteusframework.ui.search.QLBuilderImpl;
 @Repository(FacultyDAO.RESOURCE_NAME)
 public class FacultyDAO extends AbstractProcessor<Faculty>
 {
-    /** Logger. */
-    private final static Logger _logger = Logger.getLogger(Faculty.class);
     /** Resource name. */
     public static final String RESOURCE_NAME = "com.example.app.model.university.FacultyDAO";
 
@@ -47,8 +40,7 @@ public class FacultyDAO extends AbstractProcessor<Faculty>
      */
     public QLBuilder getAllFacultiesQB()
     {
-        QLBuilder qb = new QLBuilderImpl(Faculty.class,"faculty");
-        return qb;
+        return new QLBuilderImpl(Faculty.class,"faculty").setOrderBy("id asc");
     }
 
     /**

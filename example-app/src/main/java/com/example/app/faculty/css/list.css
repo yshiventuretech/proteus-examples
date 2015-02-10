@@ -9,13 +9,24 @@
  * into with I2RD.
  */
 
-.column-label {
-    border : 1px solid red;
-    width : 200px;
+.faculty-list {
+    border:1px dotted black;
+    margin:10px 50px 10px 50px;
 }
 
 .content-field {
-    width : 200px;
+    border:1px solid black;
+}
+
+.name-field,.job-field,.are-field{
+    height:30px;
     margin: 20px;
 }
+
+.faculty-management{
+    border:1px solid black;
+    margin: 10px 50px 10px 50px;
+}
+
+
 
