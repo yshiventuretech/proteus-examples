@@ -20,7 +20,6 @@ import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.context.annotation.Scope;
 
 import javax.validation.constraints.NotNull;
-import javax.xml.soap.Text;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -34,7 +33,6 @@ import com.i2rd.cms.miwt.BlankColumn;
 import com.i2rd.cms.miwt.SiteAwareMIWTApplication;
 
 import net.proteusframework.core.hibernate.dao.EntityRetriever;
-import net.proteusframework.core.html.HTMLElement;
 import net.proteusframework.core.locale.LocaleContext;
 import net.proteusframework.core.locale.LocalizedText;
 import net.proteusframework.core.locale.TextSource;
@@ -59,7 +57,6 @@ import net.proteusframework.ui.search.ActionColumn;
 import net.proteusframework.ui.search.ComboBoxConstraint;
 import net.proteusframework.ui.search.PropertyConstraint;
 import net.proteusframework.ui.search.QLBuilder;
-import net.proteusframework.ui.search.QLOrderByImpl;
 import net.proteusframework.ui.search.SearchModelImpl;
 import net.proteusframework.ui.search.SearchResultColumnImpl;
 import net.proteusframework.ui.search.SearchSupplierImpl;
@@ -86,13 +83,12 @@ import net.proteusframework.ui.workspace.WorkspaceImpl;
  * @since 1/28/15 2:09 AM
  */
 @I18NFile(symbolPrefix = FacultyManagement.RESOURCE_NAME, i18n = {
-	@I18N(symbol = "add_faculty", l10n = @L10N("Add Faculty")),
-	@I18N(symbol = "search_faculty", l10n = @L10N("University Faculty"))
+    @I18N(symbol = "add_faculty", l10n = @L10N("Add Faculty"))
 })
 @MIWTBeanConfig(value = FacultyManagement.RESOURCE_NAME, displayName = "Faculty Management",
-		applicationClass = SiteAwareMIWTApplication.class, stateEvents = {
-		@MIWTStateEvent(eventName = SiteAwareMIWTApplication.SAMA_ADD_COMPONENT, eventValue = FacultyManagement.RESOURCE_NAME),
-		@MIWTStateEvent(eventName = SiteAwareMIWTApplication.SAMA_RECREATE_ON_SITE_CHANGE, eventValue = "true")})
+    applicationClass = SiteAwareMIWTApplication.class, stateEvents = {
+    @MIWTStateEvent(eventName = SiteAwareMIWTApplication.SAMA_ADD_COMPONENT, eventValue = FacultyManagement.RESOURCE_NAME),
+    @MIWTStateEvent(eventName = SiteAwareMIWTApplication.SAMA_RECREATE_ON_SITE_CHANGE, eventValue = "true")})
 @Scope("prototype")
 @Configurable
 public class FacultyManagement extends HistoryContainer implements SearchUIOperationHandler, WorkspaceHandler
@@ -147,7 +143,7 @@ public class FacultyManagement extends HistoryContainer implements SearchUIOpera
         nameCons.setOperator(PropertyConstraint.Operator.like);
         nameCons.setProperty("firstName");
 		/* The rank type constraint */
-        List<RankType> rankList = new ArrayList<RankType>();
+        List<RankType> rankList = new ArrayList<>();
         rankList.addAll(Arrays.asList(RankType.values()));
         final ComboBoxConstraint rankCons = new ComboBoxConstraint(rankList, CommonButtonText.ANY, CommonButtonText.ANY);
         rankCons.setHTMLClass("rank");
@@ -264,14 +260,7 @@ public class FacultyManagement extends HistoryContainer implements SearchUIOpera
         searchModel.getResultColumns().add(saColumn);
 
         //QLBuilder
-        final Supplier<QLBuilder> builderSupplier = new Supplier<QLBuilder>()
-        {
-            @Override
-            public QLBuilder get()
-            {
-                return _facultyDAO.getAllFacultiesQB();
-            }
-        };
+        final Supplier<QLBuilder> builderSupplier = _facultyDAO::getAllFacultiesQB;
         final SearchSupplierImpl supplier = new SearchSupplierImpl();
         supplier.setBuilderSupplier(builderSupplier);
         supplier.setSearchModel(searchModel);
@@ -283,10 +272,7 @@ public class FacultyManagement extends HistoryContainer implements SearchUIOpera
 
         _searchUI = new SearchUIImpl(options);
         _searchUI.getComponent().getDisplay().addClassName("search_wrapper");
-        final Container search = Container.of("search",
-            new Label(FacultyManagementLOK.SEARCH_FACULTY()).setHTMLElement(HTMLElement.h1),
-            _searchUI);
-        mainCon.add(search);
+        mainCon.add(_searchUI);
     }
 
     @Override
@@ -306,7 +292,7 @@ public class FacultyManagement extends HistoryContainer implements SearchUIOpera
     @Override
     public void handle(SearchUIOperationContext context)
     {
-        final Object rowData = context.getData();
+        final Object rowData = EntityRetriever.getInstance().narrowProxyIfPossible(context.getData());
         if(rowData == null || !(rowData instanceof Faculty)) return;
         final Faculty faculty = (Faculty) rowData;
         switch(context.getOperation())

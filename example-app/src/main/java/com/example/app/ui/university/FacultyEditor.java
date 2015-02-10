@@ -32,11 +32,10 @@ import net.proteusframework.ui.miwt.component.Container;
 import net.proteusframework.ui.miwt.component.PushButton;
 import net.proteusframework.ui.miwt.component.RadioButton;
 import net.proteusframework.ui.miwt.component.composite.HistoryContainer;
+import net.proteusframework.ui.miwt.component.composite.Message;
 import net.proteusframework.ui.miwt.component.composite.MessageContainer;
 import net.proteusframework.ui.miwt.component.Field;
 import net.proteusframework.ui.miwt.data.SimpleListModel;
-import net.proteusframework.ui.miwt.event.ActionEvent;
-import net.proteusframework.ui.miwt.event.ActionListener;
 import net.proteusframework.ui.miwt.util.CommonActions;
 
 /**
@@ -98,7 +97,6 @@ public class FacultyEditor extends HistoryContainer
         mainCon.addClassName("faculty-editor");
         setDefaultComponent(mainCon);
 
-        //TODO: use the msg.
 		/* The message container. */
         MessageContainer msg = new MessageContainer(TimeUnit.SECONDS.toMillis(60));
         mainCon.add(Container.of("message-container", msg));
@@ -129,26 +127,22 @@ public class FacultyEditor extends HistoryContainer
             noRadio.setSelected(true);
 
         PushButton submitBtn=CommonActions.SUBMIT.push();
-        submitBtn.addActionListener(new ActionListener()
-        {
-            @Override
-            public void actionPerformed(ActionEvent ev)
-            {
-                _saveFaculty();
-                close();
-            }
+        submitBtn.addActionListener(ev -> {
+            _saveFaculty();
+            msg.add(Message.info(TextSources.create("Save successfully.")));
+            close();
         });
 
         PushButton cancelBtn= CommonActions.CANCEL.push();
         cancelBtn.addActionListener(ev -> close());
 
-        mainCon.add(Container.of("firstname", TextSources.create("first name:"), _firstName));
-        mainCon.add(Container.of("lastname", TextSources.create("last name:"), _lastName));
+        mainCon.add(Container.of("first-name", TextSources.create("first name:"), _firstName));
+        mainCon.add(Container.of("last-name", TextSources.create("last name:"), _lastName));
         mainCon.add(Container.of("job", TextSources.create("job grade:"), _jobGrade));
-        mainCon.add(Container.of("jointime", TextSources.create("join time:"), _joinDate));
-        mainCon.add(Container.of("searcharea", TextSources.create("search area:"), _searchArea));
+        mainCon.add(Container.of("join-time", TextSources.create("join time:"), _joinDate));
+        mainCon.add(Container.of("search-area", TextSources.create("search area:"), _searchArea));
         mainCon.add(Container.of("sabbatical", TextSources.create("on sabbatical:"), _yesRadio, noRadio));
-        mainCon.add(Container.of("pushbutton", submitBtn, cancelBtn));
+        mainCon.add(Container.of("push-button", submitBtn, cancelBtn));
     }
 
     private void _saveFaculty()
@@ -165,14 +159,15 @@ public class FacultyEditor extends HistoryContainer
         }
         _faculty.setRankType((RankType)_jobGrade.getSelectedObject());
         Date joinDate;
-        try{
-            joinDate = new Date(_joinDate.getDate().getTime());
-            _faculty.setJoinDate(joinDate);
-        }
-        catch(NullPointerException e)
+        if(null == _joinDate.getDate())
         {
-            _logger.error("no date", e);
+            joinDate = new Date(System.currentTimeMillis());
         }
+        else
+        {
+            joinDate = new Date(_joinDate.getDate().getTime());
+        }
+        _faculty.setJoinDate(joinDate);
 
         if(!_searchArea.getText().equals(_faculty.getSearchArea()))
             _faculty.setSearchArea(_searchArea.getText());
