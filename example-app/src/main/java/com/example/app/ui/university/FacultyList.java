@@ -58,6 +58,9 @@ public class FacultyList extends HistoryContainer
         _setupUI();
     }
 
+    /**
+     * Set up the components.
+     */
     private void _setupUI()
     {
         final Container mainCon = new Container();
@@ -87,6 +90,11 @@ public class FacultyList extends HistoryContainer
         }
     }
 
+    /**
+     * Set up the dialog container which contains the faculty entity.
+     * @param container The container.
+     * @param faculty The faculty entity.
+     */
     private void _setup(Container container, Faculty faculty)
     {
         Field firstName = new Field(faculty.getFirstName());

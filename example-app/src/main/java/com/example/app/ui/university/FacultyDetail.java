@@ -49,6 +49,9 @@ public class FacultyDetail extends Container
         _setupUI();
     }
 
+    /**
+     * Set up components.
+     */
     private void _setupUI()
     {
         removeAllComponents();

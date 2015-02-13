@@ -110,6 +110,9 @@ public class FacultyManagement extends HistoryContainer implements SearchUIOpera
         _setupUI();
     }
 
+    /**
+     * Set up the components.
+     */
     private void _setupUI()
     {
         final Container mainCon = new Container();
@@ -347,6 +350,11 @@ public class FacultyManagement extends HistoryContainer implements SearchUIOpera
         return new WorkspaceHandlerResult().setEventHandled(false);
     }
 
+    /**
+     * Open the faculty editor UI by workspace.
+     * @param faculty
+     * @return
+     */
     private WorkspaceHandlerResult _openTaskUI(Faculty faculty)
     {
         //open by workspace
