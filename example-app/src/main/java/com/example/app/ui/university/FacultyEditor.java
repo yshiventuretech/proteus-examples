@@ -91,6 +91,9 @@ public class FacultyEditor extends HistoryContainer
         _setupUI();
     }
 
+    /**
+     * Set up components.
+     */
     private void _setupUI()
     {
         final Container mainCon = new Container();
@@ -136,15 +139,18 @@ public class FacultyEditor extends HistoryContainer
         PushButton cancelBtn= CommonActions.CANCEL.push();
         cancelBtn.addActionListener(ev -> close());
 
-        mainCon.add(Container.of("first-name", TextSources.create("first name:"), _firstName));
-        mainCon.add(Container.of("last-name", TextSources.create("last name:"), _lastName));
-        mainCon.add(Container.of("job", TextSources.create("job grade:"), _jobGrade));
-        mainCon.add(Container.of("join-time", TextSources.create("join time:"), _joinDate));
-        mainCon.add(Container.of("search-area", TextSources.create("search area:"), _searchArea));
-        mainCon.add(Container.of("sabbatical", TextSources.create("on sabbatical:"), _yesRadio, noRadio));
+        mainCon.add(Container.of("first-name", TextSources.create("First Name:"), _firstName));
+        mainCon.add(Container.of("last-name", TextSources.create("Last Name:"), _lastName));
+        mainCon.add(Container.of("job", TextSources.create("Job Grade:"), _jobGrade));
+        mainCon.add(Container.of("join-time", TextSources.create("Join Time:"), _joinDate));
+        mainCon.add(Container.of("search-area", TextSources.create("Search Area:"), _searchArea));
+        mainCon.add(Container.of("sabbatical", TextSources.create("On Sabbatical:"), _yesRadio, noRadio));
         mainCon.add(Container.of("push-button", submitBtn, cancelBtn));
     }
 
+    /**
+     * Save the faculty entity.
+     */
     private void _saveFaculty()
     {
         String firstStr = _firstName.getText();

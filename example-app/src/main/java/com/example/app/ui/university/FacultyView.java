@@ -110,17 +110,17 @@ public class FacultyView extends HistoryContainer implements SearchUIOperationHa
         actionColumn.setTableColumn(blankColumn);
         actionColumn.setIncludeCopy(false);
         /** Results. */
-        final PropertyColumn idProp = new PropertyColumn(Faculty.class, "Id");
+        final PropertyColumn idProp = new PropertyColumn(Faculty.class, "id");
         idProp.setDisplayClass("id");
         final SearchResultColumnImpl idColumn = new SearchResultColumnImpl().withTableColumn(idProp
             .withColumnName(new LocalizedText("Id")));
 
-        final PropertyColumn nameProp = new PropertyColumn(Faculty.class, "FirstName");
+        final PropertyColumn nameProp = new PropertyColumn(Faculty.class, "firstName");
         nameProp.setDisplayClass("name");
         final SearchResultColumnImpl nameColumn = new SearchResultColumnImpl().withTableColumn(nameProp
             .withColumnName(new LocalizedText("Name")));
 
-        final PropertyColumn areaProp = new PropertyColumn(Faculty.class, "SearchArea");
+        final PropertyColumn areaProp = new PropertyColumn(Faculty.class, "searchArea");
         areaProp.setDisplayClass("area");
         final SearchResultColumnImpl areaColumn = new SearchResultColumnImpl().withTableColumn(areaProp
             .withColumnName(new LocalizedText("SearchArea")));

@@ -58,6 +58,9 @@ public class FacultyList extends HistoryContainer
         _setupUI();
     }
 
+    /**
+     * Set up the components.
+     */
     private void _setupUI()
     {
         final Container mainCon = new Container();
@@ -87,6 +90,11 @@ public class FacultyList extends HistoryContainer
         }
     }
 
+    /**
+     * Set up the dialog container which contains the faculty entity.
+     * @param container The container.
+     * @param faculty The faculty entity.
+     */
     private void _setup(Container container, Faculty faculty)
     {
         Field firstName = new Field(faculty.getFirstName());
@@ -101,11 +109,11 @@ public class FacultyList extends HistoryContainer
         searchArea.setEditable(false);
         Field sabbatical = new Field(faculty.isSabbatical() ? "Yes" : "No");
         sabbatical.setEditable(false);
-        container.add(Container.of("first-name", TextSources.create("first name:"), firstName));
-        container.add(Container.of("last-name", TextSources.create("last name:"), lastName));
-        container.add(Container.of("job", TextSources.create("job grade:"), jobGrade));
-        container.add(Container.of("join-time", TextSources.create("join time:"), joinDate));
-        container.add(Container.of("search-area", TextSources.create("search area:"), searchArea));
-        container.add(Container.of("sabbatical", TextSources.create("on sabbatical:"), sabbatical));
+        container.add(Container.of("first-name", TextSources.create("First Name:"), firstName));
+        container.add(Container.of("last-name", TextSources.create("Last Name:"), lastName));
+        container.add(Container.of("job", TextSources.create("Job Grade:"), jobGrade));
+        container.add(Container.of("join-time", TextSources.create("Join Time:"), joinDate));
+        container.add(Container.of("search-area", TextSources.create("Search Area:"), searchArea));
+        container.add(Container.of("sabbatical", TextSources.create("On Sabbatical:"), sabbatical));
     }
 }
