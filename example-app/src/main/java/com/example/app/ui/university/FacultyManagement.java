@@ -161,31 +161,31 @@ public class FacultyManagement extends HistoryContainer implements SearchUIOpera
         actionColumn.setTableColumn(blankColumn);
         actionColumn.setIncludeCopy(false);
 		/* The results */
-        final PropertyColumn idProp = new PropertyColumn(Faculty.class, "Id");
+        final PropertyColumn idProp = new PropertyColumn(Faculty.class, "id");
         idProp.setDisplayClass("id");
         idProp.setColumnName(new LocalizedText("Id"));
         final SearchResultColumnImpl idColumn = new SearchResultColumnImpl();
         idColumn.setTableColumn(idProp);
 
-        final PropertyColumn fnameProp = new PropertyColumn(Faculty.class, "FirstName");
+        final PropertyColumn fnameProp = new PropertyColumn(Faculty.class, "firstName");
         fnameProp.setDisplayClass("fname");
         fnameProp.setColumnName(new LocalizedText("FirstName"));
         final SearchResultColumnImpl fnameColumn = new SearchResultColumnImpl();
         fnameColumn.setTableColumn(fnameProp);
 
-        final PropertyColumn lnameProp = new PropertyColumn(Faculty.class, "LastName");
+        final PropertyColumn lnameProp = new PropertyColumn(Faculty.class, "lastName");
         idProp.setDisplayClass("lname");
         lnameProp.setColumnName(new LocalizedText("LastName"));
         final SearchResultColumnImpl lnameColumn = new SearchResultColumnImpl();
         lnameColumn.setTableColumn(lnameProp);
 
-        final PropertyColumn slugProp = new PropertyColumn(Faculty.class, "Slug");
+        final PropertyColumn slugProp = new PropertyColumn(Faculty.class, "slug");
         slugProp.setDisplayClass("slug");
         slugProp.setColumnName(new LocalizedText("Slug"));
         final SearchResultColumnImpl slugColumn = new SearchResultColumnImpl();
         slugColumn.setTableColumn(slugProp);
 
-        final PropertyColumn rankProp = new PropertyColumn(Faculty.class, "RankType");
+        final PropertyColumn rankProp = new PropertyColumn(Faculty.class, "rankType");
         rankProp.setDisplayClass("rank");
         rankProp.setColumnName(new LocalizedText("JobGrade"));
         final SearchResultColumnImpl rankColumn = new SearchResultColumnImpl();
@@ -216,7 +216,7 @@ public class FacultyManagement extends HistoryContainer implements SearchUIOpera
             }
         });
 
-        final PropertyColumn areaProp = new PropertyColumn(Faculty.class, "SearchArea");
+        final PropertyColumn areaProp = new PropertyColumn(Faculty.class, "searchArea");
         areaProp.setDisplayClass("area");
         areaProp.setColumnName(new LocalizedText("SearchArea"));
         final SearchResultColumnImpl areaColumn = new SearchResultColumnImpl();
@@ -366,13 +366,13 @@ public class FacultyManagement extends HistoryContainer implements SearchUIOpera
         {
             editor = new FacultyEditor();
             str = "new-faculty";
-            label = TextSources.create("create new faculty");
+            label = TextSources.create("Create New Faculty");
         }
         else
         {
             editor  = new FacultyEditor(faculty);
             str = faculty.getId().toString();
-            label = TextSources.create("edit faculty");
+            label = TextSources.create("Edit Faculty");
         }
         //when close the component,auto perform search
         editor.addComponentListener(new ComponentAdapter()

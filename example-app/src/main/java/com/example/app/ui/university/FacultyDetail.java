@@ -73,11 +73,11 @@ public class FacultyDetail extends Container
         searchArea.setEditable(false);
         Field sabbatical = new Field(_faculty.isSabbatical() ? "Yes" : "No");
         sabbatical.setEditable(false);
-        add(Container.of("first-name", TextSources.create("first name:"), firstName));
-        add(Container.of("last-name", TextSources.create("last name:"), lastName));
-        add(Container.of("job", TextSources.create("job grade:"), jobGrade));
-        add(Container.of("join-time", TextSources.create("join time:"), joinDate));
-        add(Container.of("search-area", TextSources.create("search area:"), searchArea));
-        add(Container.of("sabbatical", TextSources.create("on sabbatical:"), sabbatical));
+        add(Container.of("first-name", TextSources.create("First Name:"), firstName));
+        add(Container.of("last-name", TextSources.create("Last Name:"), lastName));
+        add(Container.of("job", TextSources.create("Job Grade:"), jobGrade));
+        add(Container.of("join-time", TextSources.create("Join Time:"), joinDate));
+        add(Container.of("search-area", TextSources.create("Search Area:"), searchArea));
+        add(Container.of("sabbatical", TextSources.create("On Sabbatical:"), sabbatical));
     }
 }
